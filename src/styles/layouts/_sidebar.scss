@@ -1,0 +1,25 @@
+.sidebar {
+  @include flex($justify: flex-start);
+
+  &-view {
+    @include flex($direction:column, $justify: flex-start, $align:flex-start);
+    min-width: 350px;
+    
+    p {
+      font-size: 1.5rem;
+      color: color(light, 300);
+      margin-top: 110px;
+      margin-left: 58px;
+      margin-bottom: 30px;
+    }
+
+    &-menu {
+
+      h5 {
+        font-size: 2.3rem;
+        margin-left: 58px;
+        margin-bottom: 25px;
+      }
+    }
+  }
+}

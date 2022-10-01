@@ -1,14 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Navbar, Footer } from "layout";
+import { Navbar, Sidebar, Footer } from "layout";
 
 export const Navigation = () => {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route />
-      </Routes>
+      <Sidebar>
+        <Routes>
+          <Route path="/design" element={<>Component</>} />
+        </Routes>
+      </Sidebar>
       <Footer />
     </Router>
   );
