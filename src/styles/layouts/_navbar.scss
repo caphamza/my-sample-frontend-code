@@ -1,5 +1,5 @@
 .navbar {
-  @include flex-row(space-between);
+  @include flex($justify: space-between);
   background-color: color(primary, 400);
   position: sticky;
   top: 0;
@@ -11,7 +11,7 @@
   }
 
   &-menuView {
-    @include flex-row;
+    @include flex;
     margin-right: 10%;
 
     &-cart-logo {
