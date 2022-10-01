@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Navbar } from "layout";
+import { Navbar, Footer } from "layout";
 
 export const Navigation = () => {
   return (
@@ -9,6 +9,7 @@ export const Navigation = () => {
       <Routes>
         <Route />
       </Routes>
+      <Footer />
     </Router>
   );
 };
