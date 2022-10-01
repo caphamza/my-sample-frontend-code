@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,700;1,700&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@600;700&display=swap');
 
 * {
   margin: 0;
@@ -6,4 +6,14 @@
   font-size: 62.5%;
   font-family: 'Livvic';
   font-weight: 700;
+}
+
+html, body {
+  height: 100%;
+}
+
+#root { 
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100%;
 }
