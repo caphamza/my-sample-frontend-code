@@ -1,8 +1,10 @@
 @import "./abstracts/colors";
 @import "./abstracts/functions";
-@import "./abstracts//mixins";
+@import "./abstracts/mixins";
 
 @import "./layouts/navbar";
 @import "./layouts/footer";
-@import "./layouts//sidebar";
+@import "./layouts/sidebar";
 
+@import "./components/button";
+@import "./components/workshopCard";

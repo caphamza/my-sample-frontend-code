@@ -1,8 +1,8 @@
 .sidebar {
-  @include flex($justify: flex-start);
+  @include flex-row(flex-start);
 
   &-view {
-    @include flex($direction:column, $justify: flex-start, $align:flex-start);
+    @include flex-column(flex-start, flex-start);
     min-width: 350px;
     
     p {
