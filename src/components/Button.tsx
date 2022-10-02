@@ -3,6 +3,7 @@ type Props = {
   color: string;
   style?: string;
   type?: string;
+  size?: string;
 };
 
 export default function button({
@@ -10,9 +11,10 @@ export default function button({
   color,
   style = "full-width",
   type = "button",
+  size = "md",
 }: Props) {
   return (
-    <button className={`button-${color} button-${style}`}>
+    <button className={`button-${color} button-${style} button-${size}`}>
       <p>{btnText}</p>
     </button>
   );
