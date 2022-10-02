@@ -38,19 +38,7 @@
       color: color(secondary, 500);
       margin-bottom: 10px;
     }
-
-    &-price {
-      margin-bottom: 20px;
-
-      .amount {
-        font-size: 2.9rem;
-        color: color(dark, 300);
-      }
-
-      .currency {
-        font-size: 1.5rem;
-        margin-left: 5px;
-      }
-    }
   }
 }
+
+@include card-course-price;

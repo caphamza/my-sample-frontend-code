@@ -1,0 +1,19 @@
+.ticket-card {
+  border-radius: 8px;
+  box-shadow: 1px 2px 16px rgba(127, 127, 127, 0.25);
+  padding: 50px 40px 52px;
+
+  &-heading {
+    font-size: 2.3rem;
+    color: color(dark, 300);
+    margin-bottom: 20px;
+  }
+
+  @include card-course-price(30px);
+  
+  &-btn-view {
+    @include flex-row(space-between)
+
+
+  }
+}

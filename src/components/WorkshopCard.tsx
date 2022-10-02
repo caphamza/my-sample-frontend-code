@@ -19,9 +19,9 @@ export default function card() {
           </div>
         </div>
         <h4>Interaction Design Workshop</h4>
-        <div className="workshop-card-info-price">
-          <span className="amount">495,00</span>
-          <span className="currency">EUR</span>
+        <div className="card-course-price">
+          <span className="card-course-price-amount">495,00</span>
+          <span className="card-course-price-currency">EUR</span>
         </div>
         <Button color="primary" btnText="Add to cart" />
       </div>
