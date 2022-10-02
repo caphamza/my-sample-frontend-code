@@ -1,0 +1,16 @@
+.button-primary {
+  background-color: color(primary, 500);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 1px 2px 8px rgba(127, 127, 127, 0.25);
+
+  p {
+    font-size: 1.8rem;
+    padding: 13px 0px;
+  }
+}
+
+.button-full-width {
+  width: 100%;
+}
