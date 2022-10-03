@@ -1,26 +1,41 @@
+import moment from "moment";
+
 import CalenderIcon from "assets/icons/calender-outline.png";
 import ClockIcon from "assets/icons/clock-outline.png";
-
 import { Button } from "components";
 
-export default function card() {
+type Props = {
+  title: string;
+  img: string;
+  date: string;
+  price: number;
+  onClick: () => void;
+};
+
+export default function card({ title, img, date, price, onClick }: Props) {
   return (
-    <div className="workshop-card">
-      <img className="workshop-card-img" alt="" src="" />
+    <div
+      className="workshop-card"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+    >
+      <img className="workshop-card-img" alt={title} src={img} />
       <div className="workshop-card-info">
-        <div className="workshop-card-info-date-time">
-          <div className="workshop-card-info-date-time-view">
+        <div className="workshop-card-info-date-time-view">
+          <div className="workshop-card-info-date-view">
             <img alt="CalenderIcon" src={CalenderIcon} />
-            <p>27.6.2020.</p>
+            <p>{moment(date).format("DD.MM.YYYY.")}</p>
           </div>
-          <div className="workshop-card-info-date-time-view">
+          <div className="workshop-card-info-time-view">
             <img alt="ClockIcon" src={ClockIcon} />
-            <p>09:00h</p>
+            <p>{`${moment(date).format("HH:mm")}h`}</p>
           </div>
         </div>
-        <h4>Interaction Design Workshop</h4>
+        <h4>{title}</h4>
         <div className="card-course-price">
-          <span className="card-course-price-amount">495,00</span>
+          <span className="card-course-price-amount">{price}</span>
           <span className="card-course-price-currency">EUR</span>
         </div>
         <Button color="primary" btnText="Add to cart" />

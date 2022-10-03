@@ -9,8 +9,8 @@ export const Navigation = () => {
       <Navbar />
       <Sidebar>
         <Routes>
-          <Route path="/workshop" element={<Workshop />} />
-          <Route path="/workshop-details" element={<WorkshopDetails />} />
+          <Route path="/" element={<Workshop />} />
+          <Route path="/workshop/:id" element={<WorkshopDetails />} />
         </Routes>
       </Sidebar>
       <Footer />

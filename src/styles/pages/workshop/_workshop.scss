@@ -1,0 +1,37 @@
+.workshops-page {
+  margin-top: 60px;
+  margin-left: 10px;
+
+  &-title {
+    font-size: 4rem;
+    line-height: 5rem;
+    color: color(dark, 300);
+    margin-left: 20px;
+  }
+
+  &-text-view {
+    @include flex-row(flex-row);
+    margin-left: 20px;
+
+    .displayed-text {
+      font-size: 1.5rem;
+      line-height: 1.87rem;
+      color: color(light, 300);
+    }
+
+    .displayed-number {
+      font-size: 1.5rem;
+      line-height: 1.87rem;
+      color: color(dark, 300);
+    }
+  }
+
+  &-cards-view {
+    @include flex-row(flex-start, flex-start);
+    flex-wrap: wrap;
+
+    .workshop-card-view {
+      margin: 40px 20px;
+    }
+  }
+}

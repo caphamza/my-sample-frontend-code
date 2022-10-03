@@ -1,5 +1,5 @@
 .sidebar {
-  @include flex-row(flex-start);
+  @include flex-row(flex-start, flex-start);
 
   &-view {
     @include flex-column(flex-start, flex-start);
