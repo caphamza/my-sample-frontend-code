@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { get } from "services/restService";
 import { addWorkshops } from "slices/workshopSlice";
+import { addWorkshopsToCart } from "slices/cartSlice";
 import { Card } from "components";
 
 import { WorkshopData } from "types";
@@ -13,6 +14,10 @@ const Workshop = () => {
   const navigate = useNavigate();
   const { workshops } = useSelector((state: RootState) => state.workshops);
   const dispatch: AppDispatch = useDispatch();
+
+  const addToCart = (args: WorkshopData) => {
+    dispatch(addWorkshopsToCart(args));
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -39,6 +44,7 @@ const Workshop = () => {
               date={workshop.date}
               price={workshop.price}
               onClick={() => navigate(`/workshop/${workshop.id}`)}
+              btnClick={() => addToCart(workshop)}
             />
           </div>
         ))}

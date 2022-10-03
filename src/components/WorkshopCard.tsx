@@ -10,9 +10,17 @@ type Props = {
   date: string;
   price: number;
   onClick: () => void;
+  btnClick: () => void;
 };
 
-export default function card({ title, img, date, price, onClick }: Props) {
+export default function card({
+  title,
+  img,
+  date,
+  price,
+  onClick,
+  btnClick,
+}: Props) {
   return (
     <div
       className="workshop-card"
@@ -38,7 +46,7 @@ export default function card({ title, img, date, price, onClick }: Props) {
           <span className="card-course-price-amount">{price}</span>
           <span className="card-course-price-currency">EUR</span>
         </div>
-        <Button color="primary" btnText="Add to cart" />
+        <Button color="primary" btnText="Add to cart" onClick={btnClick} />
       </div>
     </div>
   );
