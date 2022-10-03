@@ -10,7 +10,12 @@ export default function TicketCard() {
       </div>
       <div className="ticket-card-btn-view">
         <DropdownOutlinedButton />
-        <Button btnText="Add to Cart" color="primary" size="lg" />
+        <Button
+          btnText="Add to Cart"
+          color="primary"
+          size="lg"
+          onClick={() => {}}
+        />
       </div>
     </div>
   );

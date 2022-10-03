@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export default function sidebar({ children }: { children: ReactNode }) {
+const Sidebar = ({ children }: { children: ReactNode }) => {
   const menuItems = [
     { name: "All", link: "/" },
     { name: "Design", icon: "", link: "" },
@@ -22,4 +22,6 @@ export default function sidebar({ children }: { children: ReactNode }) {
       <div>{children}</div>
     </div>
   );
-}
+};
+
+export default Sidebar;

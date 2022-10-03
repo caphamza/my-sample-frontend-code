@@ -4,6 +4,7 @@ type Props = {
   style?: string;
   type?: string;
   size?: string;
+  onClick: () => void;
 };
 
 export default function button({
@@ -12,9 +13,16 @@ export default function button({
   style = "full-width",
   type = "button",
   size = "md",
+  onClick,
 }: Props) {
   return (
-    <button className={`button-${color} button-${style} button-${size}`}>
+    <button
+      className={`button-${color} button-${style} button-${size}`}
+      onClick={(e: React.MouseEvent<HTMLElement>) => {
+        e.stopPropagation();
+        onClick();
+      }}
+    >
       <p>{btnText}</p>
     </button>
   );
