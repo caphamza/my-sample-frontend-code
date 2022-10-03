@@ -40,6 +40,7 @@
                 "avoidEscape": true
             }
         ],
+        "import/no-named-as-default": "off",
         "import/prefer-default-export": "off",
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/comma-dangle": "off",
@@ -59,7 +60,13 @@
             {
               "namedComponents": ["function-declaration", "arrow-function"]
             }
-          ],
+        ],
+        "no-param-reassign": ["error", {
+            "props": true,
+            "ignorePropertyModificationsFor": [
+              "state"
+            ]
+          }],
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": ["error"],
         "react-hooks/rules-of-hooks": "error",

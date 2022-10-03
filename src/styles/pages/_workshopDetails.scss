@@ -5,12 +5,86 @@
 
   &-img {
     width: 100%;
-    height: 382px;
+    height: auto;
+    // max-height: 382px;
     margin-bottom: 40px;
+    object-fit: contain;
   }
 
   &-view {
-    @include flex-row(flex-start, flex-start);
-    
+    @include flex-row(space-between, flex-start);
+    margin-bottom: 80px;
   }
+
+
+
+  &-description {
+    width: 60%;
+
+    h1 {
+      font-size: 6rem;
+      line-height: 7.2rem;
+      color: color(secondary, 500);
+      margin-bottom: 20px;
+    }
+
+    .author-view {
+      @include flex-row(flex-start);
+      margin-bottom: 40px;
+
+      p {
+        font-size: 1.8rem;
+        line-height: 2.25rem;
+        color: color(dark, 400);
+        text-transform: uppercase;
+      }
+
+      h4 {
+        margin-left: 10px;
+        font-size: 2.7rem;
+        line-height: 3.37rem;
+
+      }
+    }
+
+    p {
+      font-size: 1.8rem;
+      line-height: 2.7rem;
+      font-weight: 500;
+      color: color(dark, 300)
+    }
+  }
+
+  &-date-time-view {
+    @include flex-row(flex-start);
+    margin-bottom: 20px;
+
+    .brushLogo {
+      width: 40px;
+      height: 40px;
+      background-color: color(dark, 300);
+      border-radius: 6px;
+    }
+  }
+
+  &-date-time {
+    @include flex-row(flex-start);
+    margin-left: 20px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    p {
+      font-size: 1.8rem;
+      color: color(dark, 300);
+      margin-left: 5px;
+    }
+  }
+
+  &-card-view {
+    margin-right: 20px;
+  }
+
 }
