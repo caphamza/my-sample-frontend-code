@@ -6,6 +6,7 @@ export const workshopSlice = createSlice({
   name: "workshops",
   initialState: {
     workshops: [] as WorkshopData[],
+    category: "all",
   },
   reducers: {
     addWorkshops: (state, action) => {
