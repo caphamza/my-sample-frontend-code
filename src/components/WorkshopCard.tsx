@@ -22,14 +22,10 @@ export default function card({
   btnClick,
 }: Props) {
   return (
-    <div
-      className="workshop-card"
-      onClick={onClick}
-      onKeyDown={onClick}
-      role="button"
-      tabIndex={0}
-    >
-      <img className="workshop-card-img" alt={title} src={img} />
+    <div className="workshop-card">
+      <div onClick={onClick} onKeyDown={onClick} role="button" tabIndex={0}>
+        <img className="workshop-card-img" alt={title} src={img} />
+      </div>
       <div className="workshop-card-info">
         <div className="workshop-card-info-date-time-view">
           <div className="workshop-card-info-date-view">
@@ -41,7 +37,9 @@ export default function card({
             <p>{`${moment(date).format("HH:mm")}h`}</p>
           </div>
         </div>
-        <h4>{title}</h4>
+        <div onClick={onClick} onKeyDown={onClick} role="button" tabIndex={0}>
+          <h4>{title}</h4>
+        </div>
         <div className="card-course-price">
           <span className="card-course-price-amount">{price}</span>
           <span className="card-course-price-currency">EUR</span>

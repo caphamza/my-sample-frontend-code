@@ -1,23 +1,28 @@
-import { useState, ReactNode } from "react";
+import { ReactNode } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import DesignLogo from "assets/icons/design.png";
 import FrontendLogo from "assets/icons/frontend.png";
 import BackendLogo from "assets/icons/backend.png";
 import MarketingLogo from "assets/icons/marketing.png";
+import { updateCategory } from "slices/workshopSlice";
+
+import { AppDispatch, RootState } from "store";
 
 const Sidebar = ({ children }: { children: ReactNode }) => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const dispatch: AppDispatch = useDispatch();
+  const { category } = useSelector((state: RootState) => state.workshops);
 
   const menuItems = [
-    { name: "All" },
-    { name: "Design", icon: DesignLogo },
-    { name: "Frontend", icon: FrontendLogo },
-    { name: "Backend", icon: BackendLogo },
-    { name: "Marketing", icon: MarketingLogo },
+    { name: "all" },
+    { name: "design", icon: DesignLogo },
+    { name: "frontend", icon: FrontendLogo },
+    { name: "backend", icon: BackendLogo },
+    { name: "marketing", icon: MarketingLogo },
   ];
 
-  const filterWorkshops = (category: string) => {
-    setActiveCategory(category);
+  const filterWorkshops = (categoryArg: string) => {
+    dispatch(updateCategory(categoryArg));
   };
 
   return (
@@ -40,11 +45,7 @@ const Sidebar = ({ children }: { children: ReactNode }) => {
                 src={menu.icon}
               />
             )}
-            <h5
-              className={
-                menu.name === activeCategory ? "sidebar-view-active" : ""
-              }
-            >
+            <h5 className={menu.name === category ? "sidebar-view-active" : ""}>
               {menu.name}
             </h5>
           </div>

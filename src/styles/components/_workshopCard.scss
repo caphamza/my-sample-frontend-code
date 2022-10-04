@@ -2,13 +2,13 @@
   border: 1px solid color(light, 200);
   border-radius: 8px;
   max-width: 318px;
-  cursor: pointer;
 
   &-img {
     width: 318px;
     height: 180px;
     margin-bottom: 20px;
     border-radius: 8px 8px 0px 0px;
+    cursor: pointer;
   }
 
   &-info {
@@ -51,6 +51,7 @@
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       white-space: normal;
+      cursor: pointer;
     }
   }
 }
