@@ -1,27 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
-import { get } from "services/restService";
 import { Card } from "components";
 import useWorkshop from "pages/workshop/useWorkshop";
-import { useCart } from "utils/hooks";
-
-import { WorkshopData } from "types";
-
-type UseQueryResponse = {
-  data: WorkshopData | undefined;
-  isLoading: boolean;
-  isError: boolean;
-};
+import { useQueryWorkshop, useCart } from "utils/hooks";
 
 const Workshop = () => {
   const navigate = useNavigate();
-  const { data, isLoading, isError }: UseQueryResponse = useQuery(
-    ["workshops"],
-    () => get("/workshops"),
-  );
+  const { data: workshopsData, isLoading, isError } = useQueryWorkshop();
   const { workshops, loadMore, totalWorkshops } = useWorkshop({
-    workshopsData: data,
+    workshopsData,
   });
   const { addToCart } = useCart();
 
