@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addWorkshops } from "slices/workshopSlice";
-import { useCart } from "utils/hooks";
 
 import { AppDispatch, RootState } from "store";
 import { WorkshopData } from "types";
@@ -12,7 +11,6 @@ type Props = {
 };
 
 const useWorkshop = ({ workshopsData }: Props) => {
-  const { addToCart } = useCart();
   const dispatch: AppDispatch = useDispatch();
   const { workshops, category } = useSelector(
     (state: RootState) => state.workshops,
@@ -43,7 +41,6 @@ const useWorkshop = ({ workshopsData }: Props) => {
 
   return {
     workshops: filterdWorkshops,
-    addToCart,
     loadMore,
     totalWorkshops: workshops.length,
   };

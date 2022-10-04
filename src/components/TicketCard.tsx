@@ -1,6 +1,10 @@
 import { Button, DropdownOutlinedButton } from "components";
 
-export default function TicketCard() {
+type Props = {
+  btnClick: () => void;
+};
+
+const TicketCard = ({ btnClick }: Props) => {
   return (
     <div className="ticket-card">
       <h5 className="ticket-card-heading">Buy Your Ticket</h5>
@@ -14,9 +18,11 @@ export default function TicketCard() {
           btnText="Add to Cart"
           color="primary"
           size="lg"
-          onClick={() => {}}
+          onClick={btnClick}
         />
       </div>
     </div>
   );
-}
+};
+
+export default TicketCard;
