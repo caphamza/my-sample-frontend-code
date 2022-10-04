@@ -12,10 +12,13 @@ export const workshopSlice = createSlice({
     addWorkshops: (state, action) => {
       state.workshops = action.payload;
     },
+    updateCategory: (state, action) => {
+      state.category = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = workshopSlice;
-export const { addWorkshops } = actions;
+export const { addWorkshops, updateCategory } = actions;
 
 export default reducer;

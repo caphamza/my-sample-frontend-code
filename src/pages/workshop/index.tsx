@@ -1,39 +1,39 @@
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
 import { get } from "services/restService";
-import { addWorkshops } from "slices/workshopSlice";
-import { addWorkshopsToCart } from "slices/cartSlice";
+import useWorkshop from "pages/workshop/useWorkshop";
 import { Card } from "components";
 
 import { WorkshopData } from "types";
-import { AppDispatch, RootState } from "store";
+
+type UseQueryResponse = {
+  data: WorkshopData | undefined;
+  isLoading: boolean;
+  isError: boolean;
+};
 
 const Workshop = () => {
   const navigate = useNavigate();
-  const { workshops } = useSelector((state: RootState) => state.workshops);
-  const dispatch: AppDispatch = useDispatch();
+  const { data, isLoading, isError }: UseQueryResponse = useQuery(
+    ["workshops"],
+    () => get("/workshops"),
+  );
 
-  const addToCart = (args: WorkshopData) => {
-    dispatch(addWorkshopsToCart(args));
-  };
+  const { workshops, addToCart, loadMore, totalWorkshops } = useWorkshop({
+    workshopsData: data,
+  });
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await get<WorkshopData[]>("/workshops");
-      await dispatch(addWorkshops(res));
-    };
+  if (isLoading) return <h1>Loading</h1>;
 
-    getData();
-  }, []);
+  if (isError) return <h1>Error</h1>;
 
   return (
     <div className="workshops-page">
       <h2 className="workshops-page-title">Workshops</h2>
       <div className="workshops-page-text-view">
-        <h6 className="displayed-text">Displayed: </h6>
-        <h6 className="displayed-number">13</h6>
+        <h6 className="displayed-text">Displayed:</h6>
+        <h6 className="displayed-number">{workshops.length}</h6>
       </div>
       <div className="workshops-page-cards-view">
         {workshops.map((workshop) => (
@@ -48,6 +48,19 @@ const Workshop = () => {
             />
           </div>
         ))}
+      </div>
+      <div
+        className={
+          totalWorkshops > workshops.length
+            ? "workshops-page-load-more-view"
+            : "display-none"
+        }
+        onClick={loadMore}
+        onKeyDown={loadMore}
+        role="button"
+        tabIndex={0}
+      >
+        <p>Load More</p>
       </div>
     </div>
   );

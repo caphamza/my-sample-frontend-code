@@ -1,6 +1,5 @@
 .workshops-page {
-  margin-top: 60px;
-  margin-left: 10px;
+  margin: 60px 0px 55px 10px;
 
   &-title {
     font-size: 4rem;
@@ -31,7 +30,26 @@
     flex-wrap: wrap;
 
     .workshop-card-view {
-      margin: 40px 20px;
+      margin: 40px 20px 0px;
     }
   }
+
+  &-load-more-view {
+    @include flex-row(flex-end);
+    margin-right: 17%;
+    margin-top: 40px;
+
+    p {
+      font-size: 1.8rem;
+      line-height: 2.25rem;
+      color: color(dark, 300);
+      cursor: pointer;
+      padding-bottom: 3px;
+      border-bottom: 2px solid color(secondary, 500);
+    }
+  }
+}
+
+.display-none {
+  display: none;
 }
