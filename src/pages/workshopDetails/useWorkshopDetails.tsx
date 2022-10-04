@@ -3,13 +3,18 @@ import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
 import { get } from "services/restService";
-import { useQueryWorkshop } from "utils/hooks";
 
 import { WorkshopData, UserData } from "types";
 import { RootState } from "store";
 
-type UseQueryResponse = {
+type UserQueryResponse = {
   data: UserData | undefined;
+  isLoading: boolean;
+  isError: boolean;
+};
+
+type WorkshopQueryResponse = {
+  data: WorkshopData | undefined;
   isLoading: boolean;
   isError: boolean;
 };
@@ -18,15 +23,20 @@ const useWorkshopDetails = ({ id }: { id: string }) => {
   const { workshops } = useSelector((state: RootState) => state.workshops);
   const {
     data: userData,
-    isLoading: userLoading,
+    isLoading: userLoader,
     isError: userError,
-  }: UseQueryResponse = useQuery(["user"], () => get(`/users/${id}`));
+  }: UserQueryResponse = useQuery(["user"], () => get(`/users/${id}`));
   const {
     data: workshopData,
     isLoading: workshopLoader,
     isError: workshopError,
-  } = useQueryWorkshop(workshops.length === 0, id);
-
+  }: WorkshopQueryResponse = useQuery(
+    ["workshopWithId"],
+    () => get(`/workshops/${id}`),
+    {
+      enabled: workshops.length === 0,
+    },
+  );
   const [workshop, setWorkshop] = useState({} as WorkshopData);
 
   useEffect(() => {
@@ -39,7 +49,7 @@ const useWorkshopDetails = ({ id }: { id: string }) => {
   return {
     workshop,
     user: userData,
-    isLoading: userLoading || workshopLoader,
+    isLoading: userLoader || (workshops.length === 0 && workshopLoader),
     isError: userError || workshopError,
   };
 };
