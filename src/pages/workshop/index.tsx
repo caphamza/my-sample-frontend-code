@@ -2,14 +2,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Card } from "components";
 import useWorkshop from "pages/workshop/useWorkshop";
-import { useQueryWorkshop, useCart } from "utils/hooks";
+import { useCart } from "utils/hooks";
 
 const Workshop = () => {
   const navigate = useNavigate();
-  const { data: workshopsData, isLoading, isError } = useQueryWorkshop();
-  const { workshops, loadMore, totalWorkshops } = useWorkshop({
-    workshopsData,
-  });
+  const { workshops, isLoading, isError, loadMore, totalWorkshops } =
+    useWorkshop();
   const { addToCart } = useCart();
 
   if (isLoading) return <h1>Loading</h1>;

@@ -1,20 +1,30 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addWorkshops } from "slices/workshopSlice";
+import { get } from "services/restService";
 
 import { AppDispatch, RootState } from "store";
 import { WorkshopData } from "types";
 
-type Props = {
-  workshopsData: WorkshopData | undefined;
+type UseQueryResponse = {
+  data: WorkshopData[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
 };
 
-const useWorkshop = ({ workshopsData }: Props) => {
+const useWorkshop = () => {
   const dispatch: AppDispatch = useDispatch();
   const { workshops, category } = useSelector(
     (state: RootState) => state.workshops,
   );
+  const {
+    data: workshopsData,
+    isLoading,
+    isError,
+  }: UseQueryResponse = useQuery(["workshops"], () => get("/workshops"));
+
   const [filterdWorkshops, setFilterdWorkshops] = useState<WorkshopData[]>([]);
 
   const loadMore = () => {
@@ -41,6 +51,8 @@ const useWorkshop = ({ workshopsData }: Props) => {
 
   return {
     workshops: filterdWorkshops,
+    isLoading,
+    isError,
     loadMore,
     totalWorkshops: workshops.length,
   };
