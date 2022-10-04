@@ -2,8 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { get } from "services/restService";
-import useWorkshop from "pages/workshop/useWorkshop";
 import { Card } from "components";
+import useWorkshop from "pages/workshop/useWorkshop";
+import { useCart } from "utils/hooks";
 
 import { WorkshopData } from "types";
 
@@ -19,10 +20,10 @@ const Workshop = () => {
     ["workshops"],
     () => get("/workshops"),
   );
-
-  const { workshops, addToCart, loadMore, totalWorkshops } = useWorkshop({
+  const { workshops, loadMore, totalWorkshops } = useWorkshop({
     workshopsData: data,
   });
+  const { addToCart } = useCart();
 
   if (isLoading) return <h1>Loading</h1>;
 

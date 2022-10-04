@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Navbar, Sidebar, Footer } from "layout";
-import { Workshop, WorkshopDetails } from "pages/";
+import { Workshop, WorkshopDetails } from "pages";
 
 export const Navigation = () => {
   return (

@@ -1,36 +1,35 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import moment from "moment";
 
 import { get } from "services/restService";
-import { TicketCard } from "components";
 import BrushLogo from "assets/icons/brush.png";
 import CalenderIcon from "assets/icons/calender-outline.png";
 import ClockIcon from "assets/icons/clock-outline.png";
+import { TicketCard } from "components";
+import useWorkshopDetails from "pages/workshopDetails/useWorkshopDetails";
+import { useCart } from "utils/hooks";
 
 import { WorkshopData, UserData } from "types";
-import { RootState } from "store";
+
+type UseQueryResponse = {
+  data: UserData | undefined;
+  isLoading: boolean;
+  isError: boolean;
+};
 
 const WorkshopDetails = () => {
-  const { id } = useParams();
-  const { workshops } = useSelector((state: RootState) => state.workshops);
-  const [workshopInfo, setWorkshopInfo] = useState<WorkshopData>();
-  const [workshopUser, setWorkshopUser] = useState<UserData>();
+  const { id = "" } = useParams();
+  const { data, isLoading, isError }: UseQueryResponse = useQuery(
+    ["workshops"],
+    () => get(`/users/${id}`),
+  );
+  const { workshopInfo = {} as WorkshopData } = useWorkshopDetails({ id });
+  const { addToCart } = useCart();
 
-  useEffect(() => {
-    const getUser = async () => {
-      const res = await get<UserData>(`/users/${id}`);
-      setWorkshopUser(res);
-    };
+  if (isLoading) return <h1>Loading</h1>;
 
-    getUser();
-  }, []);
-
-  useEffect(() => {
-    const workshop = workshops.filter((item) => item.id === Number(id));
-    setWorkshopInfo(workshop[0]);
-  }, [id]);
+  if (isError) return <h1>Error</h1>;
 
   return (
     <div className="workshop-details">
@@ -55,12 +54,12 @@ const WorkshopDetails = () => {
           <h1>{workshopInfo?.title}</h1>
           <div className="author-view">
             <p>with</p>
-            <h4>{workshopUser?.name}</h4>
+            <h4>{data?.name}</h4>
           </div>
           <p>{workshopInfo?.desc}</p>
         </div>
         <div className="workshop-details-card-view">
-          <TicketCard />
+          <TicketCard btnClick={() => addToCart(workshopInfo)} />
         </div>
       </div>
     </div>
