@@ -10,10 +10,11 @@ type UseQueryResponse = {
   isError: boolean;
 };
 
-const useQueryWorkshop = () => {
+const useQueryWorkshop = (isEnabled = true, idParam = "") => {
   const { data, isLoading, isError }: UseQueryResponse = useQuery(
     ["workshops"],
-    () => get("/workshops"),
+    () => get(`/workshops/${idParam}`),
+    { enabled: isEnabled },
   );
 
   return { data, isLoading, isError };
