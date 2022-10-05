@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import moment from "moment";
 
-import BrushLogo from "assets/icons/brush.png";
+import BrushLogo from "assets/icons/design.svg";
 import CalenderIcon from "assets/icons/calender-outline.png";
 import ClockIcon from "assets/icons/clock-outline.png";
 import { TicketCard } from "components";
