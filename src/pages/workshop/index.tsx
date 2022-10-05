@@ -12,7 +12,7 @@ const Workshop = () => {
 
   if (isLoading) return <h1>Loading</h1>;
 
-  if (isError) return <h1>Error</h1>;
+  if (isError) return <h2>Error</h2>;
 
   return (
     <div className="workshops-page">
