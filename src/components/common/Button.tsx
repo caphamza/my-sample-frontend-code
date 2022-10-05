@@ -1,23 +1,28 @@
 type Props = {
   btnText: string;
-  color: string;
-  style?: string;
-  type?: string;
-  size?: string;
+  color: "primary" | "secondary";
+  style?: object;
+  size?: "md" | "lg";
+  width?: string;
+  type?: "submit" | "reset" | "button";
   onClick: () => void;
 };
 
 export default function button({
   btnText = "",
-  color,
-  style = "full-width",
   type = "button",
+  color = "primary",
   size = "md",
+  width = "100%",
+  style,
   onClick,
 }: Props) {
   return (
     <button
-      className={`button-${color} button-${style} button-${size}`}
+      // eslint-disable-next-line react/button-has-type
+      type={type}
+      className={`button-${color} button-${size}`}
+      style={{ width, ...style }}
       onClick={(e: React.MouseEvent<HTMLElement>) => {
         e.stopPropagation();
         onClick();
