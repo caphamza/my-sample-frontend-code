@@ -2,7 +2,7 @@ import moment from "moment";
 
 import CalenderIcon from "assets/icons/calender-outline.png";
 import ClockIcon from "assets/icons/clock-outline.png";
-import { Button } from "components";
+import { Button } from "components/common";
 
 type Props = {
   title: string;
@@ -10,6 +10,7 @@ type Props = {
   date: string;
   price: number;
   onClick: () => void;
+  btnText: string;
   btnClick: () => void;
 };
 
@@ -19,6 +20,7 @@ export default function card({
   date,
   price,
   onClick,
+  btnText,
   btnClick,
 }: Props) {
   return (
@@ -44,7 +46,7 @@ export default function card({
           <span className="card-course-price-amount">{price}</span>
           <span className="card-course-price-currency">EUR</span>
         </div>
-        <Button color="primary" btnText="Add to cart" onClick={btnClick} />
+        <Button color="primary" btnText={btnText} onClick={btnClick} />
       </div>
     </div>
   );

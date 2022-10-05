@@ -21,8 +21,11 @@
       cursor: pointer;
 
       &-logo {
-        width: 32px;
-        height: 32px;
+        color: color(dark, 300);
+      }
+
+      &-active-logo {
+        color: color(secondary, 500);
       }
 
       h5 {
@@ -31,11 +34,17 @@
         margin-left: 5px;
         text-transform: capitalize;
       }
+
+      h5:nth-child(1) {
+        margin-left: 37px;
+      }
     }
 
     &-active {
       color: color(secondary, 500);
       border-bottom: 2px solid color(secondary, 500);
     }
+
+
   }
 }
