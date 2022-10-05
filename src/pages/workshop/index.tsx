@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { Card } from "components";
+import { WorkshopCard } from "components";
 import useWorkshop from "pages/workshop/useWorkshop";
 import { useCart } from "utils/hooks";
 
@@ -24,12 +24,13 @@ const Workshop = () => {
       <div className="workshops-page-cards-view">
         {workshops.map((workshop) => (
           <div key={workshop.id} className="workshop-card-view">
-            <Card
+            <WorkshopCard
               title={workshop.title}
               img={workshop.imageUrl}
               date={workshop.date}
               price={workshop.price}
               onClick={() => navigate(`/workshop/${workshop.id}`)}
+              btnText="Add to cart"
               btnClick={() => addToCart(workshop)}
             />
           </div>

@@ -1,4 +1,4 @@
-import { Button, DropdownOutlinedButton } from "components";
+import { Button, DropdownOutlinedButton } from "components/common";
 
 type Props = {
   btnClick: () => void;
