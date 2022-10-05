@@ -12,8 +12,10 @@
   @include card-course-price(30px);
   
   &-btn-view {
-    @include flex-row(space-between)
+    @include flex-row(space-between);
 
-
+    .add-to-cart-btn {
+      margin-left: 11px;
+    }
   }
 }

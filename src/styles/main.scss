@@ -6,7 +6,8 @@
 @import "./layouts/footer";
 @import "./layouts/sidebar";
 
-@import "./components/button";
+@import "./components/common/button";
+@import "./components/common/dropdownOutlineButton";
 @import "./components/workshopCard";
 @import "./components/tickerCard";
 

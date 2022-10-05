@@ -13,13 +13,17 @@ const TicketCard = ({ btnClick }: Props) => {
         <span className="card-course-price-currency">EUR</span>
       </div>
       <div className="ticket-card-btn-view">
-        <DropdownOutlinedButton />
-        <Button
-          btnText="Add to Cart"
-          color="primary"
-          size="lg"
-          onClick={btnClick}
-        />
+        <div>
+          <DropdownOutlinedButton />
+        </div>
+        <div className="add-to-cart-btn">
+          <Button
+            btnText="Add to Cart"
+            color="primary"
+            size="lg"
+            onClick={btnClick}
+          />
+        </div>
       </div>
     </div>
   );
