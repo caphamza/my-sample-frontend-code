@@ -64,5 +64,5 @@
 }
 
 .sidebar-main-align {
-  @include flex-row($align: flex-start);
+  @include flex-row(flex-start, flex-start);
 }
