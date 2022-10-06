@@ -5,6 +5,7 @@ import BrushLogo from "assets/icons/design.svg";
 import CalenderIcon from "assets/icons/calender-outline.png";
 import ClockIcon from "assets/icons/clock-outline.png";
 import { TicketCard } from "components";
+import { Loader } from "components/common";
 import useWorkshopDetails from "pages/workshopDetails/useWorkshopDetails";
 import { useCart } from "utils/hooks";
 
@@ -13,7 +14,7 @@ const WorkshopDetails = () => {
   const { workshop, user, isLoading, isError } = useWorkshopDetails({ id });
   const { addToCart } = useCart();
 
-  if (isLoading) return <h1>Loading</h1>;
+  if (isLoading) return <Loader />;
 
   if (isError) return <h1>Error</h1>;
 
