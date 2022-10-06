@@ -1,5 +1,7 @@
 .sidebar {
   @include flex-row(flex-start, flex-start);
+  position: sticky;
+  top: 110px;
 
   &-view {
     @include flex-column(flex-start, flex-start);
@@ -59,4 +61,8 @@
       }
     }
   }
+}
+
+.sidebar-main-align {
+  @include flex-row($align: flex-start);
 }

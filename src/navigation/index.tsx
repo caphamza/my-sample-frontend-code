@@ -7,12 +7,13 @@ export const Navigation = () => {
   return (
     <Router>
       <Navbar />
-      <Sidebar>
+      <div className="sidebar-main-align">
+        <Sidebar />
         <Routes>
           <Route path="/" element={<Workshop />} />
           <Route path="/workshop/:id" element={<WorkshopDetails />} />
         </Routes>
-      </Sidebar>
+      </div>
       <Footer />
     </Router>
   );
