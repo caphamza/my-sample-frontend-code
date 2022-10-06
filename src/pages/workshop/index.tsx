@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { WorkshopCard } from "components";
+import { Loader } from "components/common";
 import useWorkshop from "pages/workshop/useWorkshop";
 import { useCart } from "utils/hooks";
 
@@ -10,7 +11,7 @@ const Workshop = () => {
     useWorkshop();
   const { addToCart } = useCart();
 
-  if (isLoading) return <h1>Loading</h1>;
+  if (isLoading) return <Loader />;
 
   if (isError) return <h2>Error</h2>;
 
