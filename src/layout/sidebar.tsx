@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,7 +7,7 @@ import { updateCategory } from "slices/workshopSlice";
 
 import { AppDispatch, RootState } from "store";
 
-const Sidebar = ({ children }: { children: ReactNode }) => {
+const Sidebar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const dispatch: AppDispatch = useDispatch();
@@ -56,7 +55,6 @@ const Sidebar = ({ children }: { children: ReactNode }) => {
           </div>
         )}
       </div>
-      <div>{children}</div>
     </div>
   );
 };
